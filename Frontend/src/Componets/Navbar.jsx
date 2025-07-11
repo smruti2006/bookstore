@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Login from './Login';
+import Logout from './Logout';
+import {useAuth} from "../Context/Authprovider"
 const Navbar = () => {
+  const [authUser,setAuthUser]=useAuth()
   const navitems = (<>
     <li><a href='/'>Home</a></li>
     <li><a href='/Courses'>Course</a></li>
@@ -82,10 +85,15 @@ const Navbar = () => {
 
                 </label>
               </div>
-              <div>
+              {
+                authUser?<Logout/>:
+                <div>
                 <a className="bg-black text-white px-4 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>Login</a>
                 <Login/>
               </div>
+
+              }
+              
             </div>
           </div>
         </div>

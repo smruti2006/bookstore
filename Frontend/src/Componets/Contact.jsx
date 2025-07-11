@@ -1,15 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
 
 
 const Contact = () => {
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
     return (
         <>
             <div className='flex items-center justify-center min-h-screen '>
                 <div className="h-120 w-100 border-1 p-5 rounded-2xl"
                     style={{ boxShadow: '0 4px 20px rgba(251, 191, 36, 0.5)' }}>
                     <div>
-                        <form onSubmit={handlesubmit(onSubmit)}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
                             <h1 className='text-2xl'>Contact US</h1>
                             <label className='mt-5 block text-1xl'>Name</label>
